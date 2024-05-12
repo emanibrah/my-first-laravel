@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Client;
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
+
+    private $columns = ['clientName', 'email','phone','website'];
+
+    /* Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $clients = Client::get();
+        return view("clients", compact("clients"));
+        
     }
 
     /**
@@ -27,13 +31,16 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $client = new Client();
-        $client->clientName =$request->clientName ;
-        $client->phone = $request->phone;
-        $client->website = $request->website ;
-        $client->email = $request->email;
-        $client->save();
-        return 'insert successfully';
+        // $client = new Client();
+        // $client->clientName =$request->clientName ;
+        // $client->phone = $request->phone;
+        // $client->website = $request->website ;
+        // $client->email = $request->email;
+        // $client->save();
+        Client::create($request->only($this->columns));
+return redirect('clients');
+
+    // return 'insert successfully';
     }
 
     /**

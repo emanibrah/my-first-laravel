@@ -32,8 +32,13 @@ Route::post('receiveform', function (Request $request) {
 // Route::get('receiveform1',[MyController::class, 'receiveForm']);
 //Route::post('/receiveform1', 'MyController@receiveForm')->name('receiveform1');
 //Route::post('receiveform1', 'Mycontroller@receiveForm')->name('receiveform1');
-Route::get('addclient', [ClientController::class, 'create']);
-Route::post('insetclient', [ClientController::class, 'store'])->name('addclient');
 
-Route::get('addstudent', [StudentController::class, 'create']);
+// clintinsert form 
+Route::get('addclient', [ClientController::class, 'create'])->name('addclient');
+Route::get('clients', [ClientController::class, 'index'])->name('clients');
+Route::post('insetclient', [ClientController::class, 'store'])->name('insetclient');
+
+// student form 
+Route::get('addstudent', [StudentController::class, 'create'])->name('newstudent');
+Route::get('students', [StudentController::class, 'index'])->name('students');
 Route::post('insertstudent', [StudentController::class, 'store'])->name('addstudent');

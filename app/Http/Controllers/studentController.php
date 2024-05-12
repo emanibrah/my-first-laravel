@@ -6,12 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 class studentController extends Controller
 {
+    private $columns = ['studentName','age'];
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $students = Student::get();
+        return view("students", compact("students"));
     }
 
     /**
@@ -27,11 +30,15 @@ class studentController extends Controller
      */
     public function store(Request $request)
     {
-        $student = new Student();
-        $student->studentName =$request->studentName ;
-        $student->age = $request->age;
-        $student->save();
-        return 'insert successfully';
+        // $student = new Student();
+        // $student->studentName =$request->studentName ;
+        // $student->age = $request->age;
+        // $student->save();
+        // return 'insert successfully';
+        Student::create($request->only($this->columns));
+        return redirect('students');
+        
+
     }
 
     /**
