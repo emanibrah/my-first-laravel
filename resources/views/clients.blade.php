@@ -19,6 +19,10 @@
         <th>Emil</th>
         <th>phone</th>
         <th>Website</th>
+        <th>Edit</th>
+        <th>Show</th>
+        <th>Delete</th>
+
       </tr>
     </thead>
     <tbody>
@@ -28,6 +32,18 @@
         <td>{{$client->email}}</td>
         <td>{{$client->phone}}</td>
         <td>{{$client->website}}</td>
+        <td><a href="{{route('editclients', $client->id)}}"> Edit</a></td>
+        <td><a href="{{route('showclients', $client->id)}}"> Show </a></td>
+        <td>
+            <form action= "{{ route('deleteclient') }}" method="post">
+                @csrf
+                @method('DELETE')
+                <input type="hidden" name="id" value="{{ $client->id }}">
+                <input type="submit" value="delete">
+            </form>
+        </td>
+
+
       </tr>
       @endforeach
     </tbody>

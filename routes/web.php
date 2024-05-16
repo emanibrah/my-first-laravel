@@ -37,8 +37,16 @@ Route::post('receiveform', function (Request $request) {
 Route::get('addclient', [ClientController::class, 'create'])->name('addclient');
 Route::get('clients', [ClientController::class, 'index'])->name('clients');
 Route::post('insetclient', [ClientController::class, 'store'])->name('insetclient');
+Route::get('editclients/{id}', [ClientController::class, 'edit'])->name('editclients');
+Route::put('updateclients/{id}', [ClientController::class, 'update'])->name('updateclients');
+Route::get('showclients/{id}', [ClientController::class, 'show'])->name('showclients');
+Route::delete('deleteclient', [ClientController::class, 'destroy'])->name('deleteclient');
 
 // student form 
 Route::get('addstudent', [StudentController::class, 'create'])->name('newstudent');
 Route::get('students', [StudentController::class, 'index'])->name('students');
 Route::post('insertstudent', [StudentController::class, 'store'])->name('addstudent');
+Route::get('editstudents/{id}', [StudentController::class, 'edit'])->name('editstudents');
+Route::put('updatestudents/{id}', [StudentController::class, 'update'])->name('updatestudents');
+Route::get('showstudents/{id}', [StudentController::class, 'show'])->name('showstudents');
+Route::delete('deletestudent', [StudentController::class, 'destroy'])->name('deletestudent');

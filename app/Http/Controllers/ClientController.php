@@ -48,7 +48,8 @@ return redirect('clients');
      */
     public function show(string $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        return view('showClient', compact('client'));
     }
 
     /**
@@ -56,7 +57,10 @@ return redirect('clients');
      */
     public function edit(string $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        return view('editClient', compact('client'));
+        
+
     }
 
     /**
@@ -64,14 +68,18 @@ return redirect('clients');
      */
     public function update(Request $request, string $id)
     {
-        //
+        Client::where('id', $id)->update($request->only($this->columns));
+            return redirect('clients');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->id;
+            Client::where('id', $id)->delete();
+            return redirect('clients');
+
     }
 }

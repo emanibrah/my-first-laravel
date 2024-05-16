@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Clients</title>
+  <title>Students</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -17,7 +17,8 @@
       <tr>
         <th>Student Name</th>
         <th>age</th>
-        
+        <th>Edit</th>
+        <th>show</th>
       </tr>
     </thead>
     <tbody>
@@ -25,6 +26,18 @@
       <tr>
         <td>{{$student->studentName}}</td>
         <td>{{$student->age}}</td>
+        <td><a href="{{route('editstudents', $student->id)}}"> Edit</a></td>
+        <td><a href="{{route('showstudents', $student->id)}}"> Show </a></td>
+        <td>
+            <form action="{{ route('deletestudent') }}" method="post">
+                  @csrf
+                  @method('DELETE')
+                  <input type="hidden" name="id" value="{{ $student->id }}">
+                  <input type="submit" value="delete">
+            </form>
+        </td>
+
+
       </tr>
       @endforeach
     </tbody>
