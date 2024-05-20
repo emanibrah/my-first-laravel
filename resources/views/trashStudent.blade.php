@@ -17,17 +17,17 @@
       <tr>
         <th>Student Name</th>
         <th>age</th>
-        <th>Edit</th>
+        <th>Restore</th>
         <th>show</th>
         <th>Delete</th>
       </tr>
     </thead>
     <tbody>
-    @foreach($students as $student)
+    @foreach($trashed as $student)
       <tr>
         <td>{{$student->studentName}}</td>
         <td>{{$student->age}}</td>
-        <td><a href="{{route('editstudents', $student->id)}}"> Edit</a></td>
+        <td><a href="{{route('restorestudent', $student->id)}}"> restore</a></td>
         <td><a href="{{route('showstudents', $student->id)}}"> Show </a></td>
         <td>
             <form action="{{ route('deletestudent') }}" method="post">

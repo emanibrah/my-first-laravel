@@ -7,7 +7,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="{{route('addclient')}}"> addclints</a></li>
       <li><a href="{{route('clients')}}"> clints</a></li>
-      <li><a href="#">Page 2</a></li>
+      <li><a href="{{route('trashclient')}}">Trash </a></li>
       <li><a href="#">Page 3</a></li>
     </ul>
   </div>

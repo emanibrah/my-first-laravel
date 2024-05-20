@@ -41,6 +41,8 @@ Route::get('editclients/{id}', [ClientController::class, 'edit'])->name('editcli
 Route::put('updateclients/{id}', [ClientController::class, 'update'])->name('updateclients');
 Route::get('showclients/{id}', [ClientController::class, 'show'])->name('showclients');
 Route::delete('deleteclient', [ClientController::class, 'destroy'])->name('deleteclient');
+Route::get('trashClient', [ClientController::class, 'trash'])->name('trashclient');
+Route::get('restoreClient/{id}', [ClientController::class, 'restore'])->name('restoreclient');
 
 // student form 
 Route::get('addstudent', [StudentController::class, 'create'])->name('newstudent');
@@ -50,3 +52,5 @@ Route::get('editstudents/{id}', [StudentController::class, 'edit'])->name('edits
 Route::put('updatestudents/{id}', [StudentController::class, 'update'])->name('updatestudents');
 Route::get('showstudents/{id}', [StudentController::class, 'show'])->name('showstudents');
 Route::delete('deletestudent', [StudentController::class, 'destroy'])->name('deletestudent');
+Route::get('trashStudent', [StudentController::class, 'trash'])->name('trashstudent');
+Route::get('restoreStudent/{id}', [StudentController::class, 'restore'])->name('restorestudent');

@@ -82,4 +82,20 @@ return redirect('clients');
             return redirect('clients');
 
     }
+    //rash
+    public function trash()
+        {
+        $trashed = Client::onlyTrashed()->get();
+        return view('trashClient', compact('trashed'));
+        }
+
+//restore
+    
+    public function restore(string $id)
+    {
+    Client::where('id', $id)->restore();
+    return redirect('clients');
+    }
+    
+
 }
