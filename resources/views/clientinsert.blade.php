@@ -11,7 +11,12 @@
 <h2> Add Client </h2>
 <form action="{{route('insetclient')}}" method="post">
     @csrf
-    <label for="fname">clientName:</label><br>
+    
+          <p style="color: red">
+            @error('clientName')
+              {{ $message }}
+            @enderror
+  </p><label for="fname">clientName:</label><br>
   <input type="text" id="clientName" name="clientName"class="form-control"  ><br>
   <label for="lname">email:</label><br>
   <input type="email" id="email" name="email"class="form-control"><br><br>

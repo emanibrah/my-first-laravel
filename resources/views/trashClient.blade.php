@@ -11,7 +11,7 @@
 <body>
 @include('includes.nav')
 <div class="container">
-  <h2>Clients Data</h2>
+  <h2> Trashed Clients </h2>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -32,14 +32,14 @@
         <td>{{$client->email}}</td>
         <td>{{$client->phone}}</td>
         <td>{{$client->website}}</td>
-        <td><a href="{{route('restoreclient', $client->id)}}"> trash</a></td>
+        <td><a href="{{ route('forceDeleteClient')}}"> trash</a></td>
         <td><a href="{{route('showclients', $client->id)}}"> Show </a></td>
         <td>
             <form action= "{{ route('deleteclient') }}" method="post">
                 @csrf
                 @method('DELETE')
                 <input type="hidden" name="id" value="{{ $client->id }}">
-                <input type="submit" value="delete">
+                <input type="submit" value="delete" onclick="return confirm('Are you sure you want to delete this client?')">
             </form>
         </td>
 

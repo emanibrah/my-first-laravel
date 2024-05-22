@@ -7,7 +7,7 @@ use App\Models\Client;
 class ClientController extends Controller
 {
 
-    private $columns = ['clientName', 'email','phone','website'];
+    //private $columns = ['clientName', 'email','phone','website'];
 
     /* Display a listing of the resource.
      */
@@ -37,10 +37,24 @@ class ClientController extends Controller
         // $client->website = $request->website ;
         // $client->email = $request->email;
         // $client->save();
-        Client::create($request->only($this->columns));
-return redirect('clients');
+       // Client::create($request->only($this->columns));
+              //return redirect('clients');
 
     // return 'insert successfully';
+
+    $data = $request->validate([
+        'clientName' => 'required|max:100|min:5',
+        'phone' => 'required|min:11',
+        'email' => 'required|email:rfc',
+        'website' => 'required',
+    ]);
+
+    //$data['active'] = isset($request->active);
+    Client::create($data);
+    return redirect('clients');
+
+
+
     }
 
     /**
@@ -68,9 +82,28 @@ return redirect('clients');
      */
     public function update(Request $request, string $id)
     {
-        Client::where('id', $id)->update($request->only($this->columns));
-            return redirect('clients');
+        // Client::where('id', $id)->update($request->only($this->columns));
+        //     return redirect('clients');
+        $data = $request->validate([
+            'clientName' => 'required|max:100|min:5',
+            'phone' => 'required|min:11',
+            'email' => 'required|email:rfc',
+            'website' => 'required',
+        ]);
+        Client::where('id', $id)->update($data);
+        return redirect('clients');
+
     }
+
+    //Force Delete.
+    
+   public function forceDelete(Request $request)
+   {
+       $id = $request->id;
+       Client::where('id',$id)->forceDelete();
+       return redirect('trashClient');
+   }
+
 
     /**
      * Remove the specified resource from storage.
