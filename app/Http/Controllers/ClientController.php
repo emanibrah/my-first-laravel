@@ -52,7 +52,9 @@ class ClientController extends Controller
     //$data['active'] = isset($request->active);
     Client::create($data);
     return redirect('clients');
+    
 
+    
 
 
     }

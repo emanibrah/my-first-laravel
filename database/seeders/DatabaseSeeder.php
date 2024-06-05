@@ -19,5 +19,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+if(Client::count()==0){
+
+    $this->call(clientsSeeder::class);
+
+}
+
     }
 }
