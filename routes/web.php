@@ -55,3 +55,10 @@ Route::delete('forceDeleteClient',[ClientController::class,'forceDelete'])->name
 Route::delete('deletestudent', [StudentController::class, 'destroy'])->name('deletestudent');
 Route::get('trashStudent', [StudentController::class, 'trash'])->name('trashstudent');
 Route::get('restoreStudent/{id}', [StudentController::class, 'restore'])->name('restorestudent');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes(['verify'=>true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
