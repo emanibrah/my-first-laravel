@@ -12,14 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('clients', function (Blueprint $table) {
+            
             $table->id();
             $table->string('clientName', 100);
             $table->string('phone', 25);
-            $table->foreignId('cityName_id')->constrained('cities');
             $table->string('email', 100);
             $table->string('website', 100);
+            $table->string('image', 100);
+            $table->boolean('active');
+            $table->foreignId('cityName_id')->constrained('cities');
             $table->softDeletes();
             $table->timestamps();
+
+
         });
     }
 
