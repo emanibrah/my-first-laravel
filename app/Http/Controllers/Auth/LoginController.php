@@ -37,4 +37,13 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
     }
+
+    public function credentials(Request $request){
+        if(($request->username)){
+        return ['username'=>$request->username, 'password'=>$request->passwordd];
+        }
+}
+        
+
+
 }
