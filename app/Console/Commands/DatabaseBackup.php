@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-
+use Carbon\Carbon;
 class DatabaseBackup extends Command
 {
     /**
@@ -18,14 +18,19 @@ class DatabaseBackup extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Automating Daily Backups';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        //
+       
+        $filename = Carbon::now()->format('Y-m-d') .".sql";
+        $command = "mysqldump --user=" . env('DB_USERNAME') ." --password=" . env('DB_PASSWORD')
+        . " --host=" . env('DB_HOST') . " " . env('DB_DATABASE')  . " > " . storage_path() . "/app/backup/" . $filename;
+        exec($command);
+        
     }
 }
 
