@@ -8,7 +8,9 @@
       <li class="active"><a href="{{route('addclient')}}"> addclints</a></li>
       <li><a href="{{route('clients')}}"> clints</a></li>
       <li><a href="{{route('trashclient')}}">Trash </a></li>
-      <li><a href="#">Page 3</a></li>
+      <li> <a href="{{ route('facebookRedirect') }}">Login with facebook</a></li>
+      
+
     </ul>
   </div>
 </nav>
